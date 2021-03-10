@@ -4,11 +4,11 @@ import './GameCell.css';
 import xImage from './x.png';
 import oImage from './o.svg';
 
-class GameCell extends React.Component {
-  render() {
-    const { content, onClick, id } = this.props;
 
-    if (content === 1) {
+function GameCell(props) {
+  const { content, id, onClick } = props;
+
+  if (content === 1) {
       return (
         <div
           data-testid={`cell_${id}`}
@@ -49,7 +49,7 @@ class GameCell extends React.Component {
         onClick={onClick}
       />
     );
-  }
+
 }
 
 GameCell.propTypes = {

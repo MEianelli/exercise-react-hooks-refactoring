@@ -1,24 +1,24 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import GameCell from './GameCell';
+import GameContext from './GameContext';
 import './GameBoard.css';
 
-class GameBoard extends React.Component {
-  render() {
-    const { gameState, updateGame } = this.props;
-    return (
-      <div className="game-board">
-        {gameState.map((playerId, i) => (
-          <GameCell
-            id={i}
-            key={i}
-            onClick={() => updateGame(i)}
-            content={playerId}
-          />
-        ))}
-      </div>
-    );
-  }
+
+function GameBoard() {
+  const { gameState, updateGame } = useContext(GameContext);
+  return (
+    <div className="game-board">
+      {gameState.map((playerId, i) => (
+        <GameCell
+          id={i}
+          key={i}
+          onClick={() => updateGame(i)}
+          content={playerId}
+        />
+      ))}
+    </div>
+  );
 }
 
 GameBoard.propTypes = {
